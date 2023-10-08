@@ -1,5 +1,5 @@
 let counter = 0;
 setInterval(() => {
-    console.log(`LOG: ${counter}`)
+    console.log(`[${new Date().toISOString()}] CONTAINER LOG: ${counter}`)
     counter++;
-}, 5000)
+}, 2000)
