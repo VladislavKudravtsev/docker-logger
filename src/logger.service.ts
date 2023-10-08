@@ -17,10 +17,11 @@ export class ContainerLoggerService {
       const logStream = new stream.PassThrough();
   
       logStream.on('data', async (chunk) => {
-        const line = chunk.toString('utf8');
+        const data = chunk.toString('utf8');
+
         // save data to storage
-        await this.storage.save(line);
-        console.log(line.trimEnd());
+        await this.storage.save(data);
+        console.log(data.trimEnd());
       });
   
       container.logs({
@@ -40,7 +41,12 @@ export class ContainerLoggerService {
   
     public async start() {
       const containers = await this.docker.listContainers();
-  
+
+      if (containers.length === 0) {
+        console.log('There is no contaienrs to listen');
+        return
+      }
+
       const cliOptions = [
         {
           type: 'list',
