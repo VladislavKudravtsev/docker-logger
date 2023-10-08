@@ -38,7 +38,7 @@ export class ContainerLoggerService {
         console.log(err.message);
       }
 
-      // attach stream to contaier logs
+      // attach stream to container logs
       container.modem.demuxStream(stream, logStream, logStream);
     });
   }

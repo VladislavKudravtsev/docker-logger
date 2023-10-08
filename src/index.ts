@@ -9,7 +9,7 @@ async function start() {
   const containers = await docker.listContainers();
 
   if (containers.length === 0) {
-    console.log('There is no contaienrs to listen');
+    console.log('There is no containers to listen');
     return;
   }
 
